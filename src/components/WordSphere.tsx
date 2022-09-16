@@ -1,25 +1,22 @@
-import React from 'react'
-import WordModel from './WordModel'
-import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
-import styled from "@emotion/styled"
-import { motion, MotionCanvas, LayoutCamera } from "framer-motion-3d"
-
-
-const Container = styled(motion.div)`
-
-  background-color: #ee1f1f;  
-  width: 50vw;
-  height: 50vh;
-`
-
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { MotionCanvas } from "framer-motion-3d";
+import { Euler } from "@react-three/fiber";
 
 const WordSphere = () => {
+  
   return (
-    <Container>
-        <WordModel/>
-    </Container>
-  )
-}
+    <div id="canvas-container">
+      <MotionCanvas>
+        <ambientLight intensity={0.1} />
+        <directionalLight color="red" position={[0, 0, 5]} />
+        <mesh rotation-x={0.5} position={[0, 0, 3]}>
+          <boxGeometry/>
+          <meshNormalMaterial/>
+        </mesh>
+      </MotionCanvas>
+    </div>
+  );
+};
 
-export default WordSphere
+export default WordSphere;
